@@ -50,7 +50,7 @@ pong
 9> pong:send(Pid2, pong). % loop will never die until being explicitly killed.
 ping
 
-10> pong:kill(Pid).
+10> pong:shutdown(Pid).
 avadaKedavra
 
 11> process_info(Pid).
