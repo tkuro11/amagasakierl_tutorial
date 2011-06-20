@@ -1,0 +1,70 @@
+Erlang R14B03 (erts-5.8.4) [source] [smp:2:2] [rq:2] [async-threads:0] [hipe] [kernel-poll:false]
+
+Eshell V5.8.4  (abort with ^G)
+1> c("/home/tkuro/erlang_kansai/src/pong", [{outdir, "/home/tkuro/erlang_kansai/ebin/"}]).
+c("/home/tkuro/erlang_kansai/src/pong", [{outdir, "/home/tkuro/erlang_kansai/ebin/"}]).
+{ok,pong}
+
+2> Pid = spawn(pong, resp, []).
+<0.39.0>
+
+3> process_info(Pid).
+[{current_function,{pong,resp,0}},
+ {initial_call,{pong,resp,0}},
+ {status,waiting},
+ {message_queue_len,0},
+ {messages,[]},
+ {links,[]},
+ {dictionary,[]},
+ {trap_exit,false},
+ {error_handler,error_handler},
+ {priority,normal},
+ {group_leader,<0.25.0>},
+ {total_heap_size,233},
+ {heap_size,233},
+ {stack_size,1},
+ {reductions,1},
+ {garbage_collection,[{min_bin_vheap_size,46368},
+                      {min_heap_size,233},
+                      {fullsweep_after,65535},
+                      {minor_gcs,0}]},
+ {suspending,[]}]
+
+4> Pid ! {self(), ping}.  % manually send a message 'ping'
+{<0.32.0>,ping}               % ?? it's just we sent to ??
+                              % ... yes, message back to us is yet in the mailbox
+5> receive                % manually receive message
+5>  R -> R
+5> end.
+{<0.39.0>,pong}               % right! got pong!
+
+6> process_info(Pid).
+undefined                    % he's dead now. RIP
+
+7> Pid2 = spawn(pong, loop, []).   % loop version
+<0.45.0>
+
+8> pong:send(Pid2, ping). % this time we use util func
+pong
+
+9> pong:send(Pid2, pong). % loop will never die until being explicitly killed.
+ping
+
+10> pong:kill(Pid).
+avadaKedavra
+
+11> process_info(Pid).
+undefined
+
+
+
+User switch command
+ --> q
+
+Process inferior-erlang finished
+
+%% vim: ft=erlang
+
+%% Local Variables:
+%% mode: erlang
+%% End:

@@ -1,0 +1,61 @@
+Erlang R14B03 (erts-5.8.4) [source] [smp:2:2] [rq:2] [async-threads:0] [hipe] [kernel-poll:false]
+
+Eshell V5.8.4  (abort with ^G)
+1> 1+1.
+2
+2> 1.0+1.
+2.0
+3> math:pow(2,90).
+1.2379400392853803e27
+4> 1234567 bsl 90.
+1528319920480434069841387095851008
+5> [1,2,3,4].
+[1,2,3,4]
+6> "hogerimakuri".
+"hogerimakuri"
+7> [65,66,67].
+"ABC"                   % wwwwwhat?!
+8> A = 10.
+10
+9> A.
+10
+10> A*A.
+100
+11> A = 20.
+** exception error: no match of right hand side value 20
+12> f(A).
+ok
+13> A = 34.
+34
+14> A.
+34
+15> 
+15> atom.
+atom
+16> symbol.
+symbol
+17> {it, is, a, tuple, 1234, "string"}.
+{it,is,a,tuple,1234,"string"}
+18> {tuple, is, often, used, with, atoms, to, express, some, labeled, struct}.
+{tuple,is,often,used,with,atoms,to,express,some,labeled,struct}
+19> Pinfo = [{age, 100000}, {name, tkuro}, {iq, 0}].   % like this
+[{age,100000},{name,tkuro},{iq,0}]
+20> [Age, Name, Iq] = Pinfo.     % pattern match to extract infos
+[{age,100000},{name,tkuro},{iq,0}]
+21> Age.
+{age,100000}
+22> Name.
+{name,tkuro}
+23> Iq.
+{iq,0}
+24> 
+
+User switch command
+ --> q
+
+Process inferior-erlang finished
+
+%% vim: ft=erlang
+%% Local Variables:
+%% mode: erlang
+%% End:

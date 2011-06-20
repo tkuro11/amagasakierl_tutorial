@@ -1,0 +1,33 @@
+Erlang R14B03 (erts-5.8.4) [source] [smp:2:2] [rq:2] [async-threads:0] [hipe] [kernel-poll:false]
+
+Eshell V5.8.4  (abort with ^G)
+1> c("/home/tkuro/erlang_kansai/src/hello", [{outdir, "/home/tkuro/erlang_kansai/ebin/"}]).
+c("/home/tkuro/erlang_kansai/src/hello", [{outdir, "/home/tkuro/erlang_kansai/ebin/"}]).
+{ok,hello}
+2> hello:greeting().
+2> hello:greeting().
+* 1: syntax error before: ':'
+2> hello:greeting().
+Hello World .. commas in sequential
+Hello World .. statements are mandatory
+Hello World .. ugly...
+ok
+3> hello:greeting("hello again").     
+hello again
+ok                              % io:format/1 also return ok
+4> hello:sum(100).
+5050
+5> hello:sum(10).
+55
+
+
+User switch command
+ --> q
+
+Process inferior-erlang finished
+
+
+%% vim: ft=erlang
+%% Local Variables:
+%% mode: erlang
+%% End:
